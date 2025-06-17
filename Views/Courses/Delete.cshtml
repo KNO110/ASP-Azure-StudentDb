@@ -1,0 +1,14 @@
+﻿@model StudentPortal.Models.Course
+@{
+    ViewData["Title"] = "Delete Course";
+}
+<h1>Delete Course</h1>
+<h3>Are you sure you want to delete this course?</h3>
+<div>
+    <strong>@Model.Title</strong> — @Model.Credits credits
+</div>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="CourseId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

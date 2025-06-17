@@ -1,0 +1,20 @@
+﻿@model StudentPortal.Models.Course
+@{
+    ViewData["Title"] = "Course Details";
+}
+<h1>Details - @Model.Title</h1>
+<dl class="row">
+    <dt class="col-sm-2">Title</dt>
+    <dd class="col-sm-10">@Model.Title</dd>
+    <dt class="col-sm-2">Credits</dt>
+    <dd class="col-sm-10">@Model.Credits</dd>
+    <dt class="col-sm-2">Enrolled Students</dt>
+    <dd class="col-sm-10">
+        @foreach (var e in Model.Enrollments)
+        {
+            <div>@e.Student.FirstName @e.Student.LastName (Grade: @(e.Grade.HasValue ? e.Grade.ToString() : "-"))</div>
+        }
+    </dd>
+</dl>
+<a asp-action="Edit" asp-route-id="@Model.CourseId" class="btn btn-primary">Edit</a>
+<a asp-action="Index" class="btn btn-secondary">Back to List</a>

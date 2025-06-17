@@ -1,0 +1,20 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Course Statistics";
+}
+<h1>Course Statistics</h1>
+<table class="table table-striped">
+    <thead>
+        <tr><th>Course</th><th>Students Enrolled</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var stat in Model)
+        {
+            <tr>
+                <td>@stat.Title</td>
+                <td>@stat.StudentCount</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-secondary">Back to Courses</a>

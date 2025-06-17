@@ -1,0 +1,28 @@
+﻿@model IEnumerable<StudentPortal.Models.Enrollment>
+@{
+    ViewData["Title"] = "Enrollments";
+}
+<h1>Enrollments</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary">+ New Enrollment</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr><th>Student</th><th>Course</th><th>Grade</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.Student.FirstName @e.Student.LastName</td>
+                <td>@e.Course.Title</td>
+                <td>@(e.Grade.HasValue ? e.Grade.ToString() : "-")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@e.EnrollmentId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@e.EnrollmentId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@e.EnrollmentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

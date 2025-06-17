@@ -1,0 +1,24 @@
+﻿@model IEnumerable<StudentPortal.Models.Student>
+@{
+    ViewData["Title"] = "Top Students";
+}
+<h1>Top Students (Grade &gt; 90)</h1>
+<table class="table table-striped">
+    <thead>
+        <tr><th>Name</th><th>Course</th><th>Grade</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            foreach (var e in s.Enrollments.Where(x => x.Grade > 90))
+            {
+                <tr>
+                    <td>@s.FirstName @s.LastName</td>
+                    <td>@e.Course.Title</td>
+                    <td>@e.Grade</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<a asp-action="Index" class="btn btn-secondary">Back to Students</a>
